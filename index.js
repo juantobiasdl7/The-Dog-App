@@ -1,8 +1,8 @@
 require("dotenv").config();
 
-console.log(process.env.DOGS_API_KEY)
+console.log(process.env.THE_DOG_API_KEY)
 
-
+console.log("Hole")
 
 // const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
 // const API_URL_FAVOTITES = 'https://api.thecatapi.com/v1/favourites?api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
