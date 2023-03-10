@@ -12,11 +12,24 @@ Importand Commands
 -npm init -y
 -npm i dotdev
 
+git status
+git add .
+git commit -m ""
+git push -u origin master
+
+
 https://thedogapi.com/
+
+https://sebhastian.com/javascript-require-is-not-defined/
+Browserify tutorial https://www.youtube.com/watch?v=_dtnD_8Att0
+https://github.com/browserify/browserify#usage
+Require is not meant to work on the browser, is a Node JS function and it is supposed to be loading dependencies in a Node environment only
+Command: npm install browserify
+./node_modules/browserify/bin/cmd.js ./index.js > ./dist/bundle.js
 
 https://www.freecodecamp.org/news/how-to-use-environment-variables-in-vanillajs/
 
-
+https://requirejs.org/docs/download.html
 
 https://www.markdownguide.org/basic-syntax/
 
