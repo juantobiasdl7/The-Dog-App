@@ -15,7 +15,7 @@ Importand Commands
 git status
 git add .
 git commit -m ""
-git push -u origin master
+git push -u origin main
 
 
 https://thedogapi.com/
@@ -25,9 +25,12 @@ Browserify tutorial https://www.youtube.com/watch?v=_dtnD_8Att0
 https://github.com/browserify/browserify#usage
 Require is not meant to work on the browser, is a Node JS function and it is supposed to be loading dependencies in a Node environment only
 Command: npm install browserify
+
 ./node_modules/browserify/bin/cmd.js ./index.js > ./dist/bundle.js
 
 https://www.freecodecamp.org/news/how-to-use-environment-variables-in-vanillajs/
+
+https://medium.com/@zak786khan/env-variables-undefined-78cf218dae87
 
 https://requirejs.org/docs/download.html
 

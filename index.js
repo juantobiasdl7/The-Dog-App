@@ -1,8 +1,60 @@
 require("dotenv").config();
 
-console.log(process.env.THE_DOG_API_KEY)
+const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search';
+const API_URL_ANALYZE = (id) => `https://api.thedogapi.com/v1/favourites/${id}/Analyze`;
 
-console.log("Hol")
+//console.log(process.env);
+
+console.log("The Script Running");
+
+const identificator = '9ccXTANkb'
+
+const secret = process.env.THE_DOG_API_KEY;
+
+console.log(secret);
+
+async function loadRandomPerros() {
+  const res = await fetch(API_URL_RANDOM);
+  const data = await res.json();
+  console.log('Load Random Dogs')
+  console.log(data)
+
+  if (res.status !== 200) {
+    spanError.innerHTML = "Hubo un error: " + res.status;
+  } else {
+    const img1 = document.getElementById('img1');
+        
+    img1.src = data[0].url;
+    
+  }
+}
+
+const reload_button = document.getElementById('recargar');
+
+reload_button.addEventListener("click", () => {
+    loadRandomPerros();
+})
+  
+
+// async function analyzeFavouriteDog(id) {
+//   const res = await fetch(API_URL_ANALYZE(id), {
+//     headers: {
+//       'Content-Type' : 'application/json',
+//       'X-API-KEY' : secret
+//     }
+//   });
+
+//  const data = await res.json();
+//  console.log('Analyze')
+//  console.log(data)
+// }
+
+
+
+loadRandomPerros();
+// analyzeFavouriteDog(identificator);
+
+
 
 // const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
 // const API_URL_FAVOTITES = 'https://api.thecatapi.com/v1/favourites?api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
