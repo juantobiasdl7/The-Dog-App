@@ -1,13 +1,14 @@
 require("dotenv").config();
 
 const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search';
-const API_URL_ANALYZE = (id) => `https://api.thedogapi.com/v1/favourites/${id}/Analyze`;
+const API_URL_ANALYZE = (id) => `https://api.thedogapi.com/v1/images/${id}/analysis`;
+const API_URL_FAV = 'https://api.thedogapi.com/v1/favourites';
 
 //console.log(process.env);
 
 console.log("The Script Running");
 
-const identificator = '9ccXTANkb'
+const identificator = 'HJWZZxc4X'
 
 const secret = process.env.THE_DOG_API_KEY;
 
@@ -36,24 +37,41 @@ reload_button.addEventListener("click", () => {
 })
   
 
-// async function analyzeFavouriteDog(id) {
-//   const res = await fetch(API_URL_ANALYZE(id), {
-//     headers: {
-//       'Content-Type' : 'application/json',
-//       'X-API-KEY' : secret
-//     }
-//   });
+async function analyzeFavouriteDog(id) {
+  const res = await fetch(API_URL_ANALYZE(id), {
+    headers: {
+      'Content-Type' : 'application/json',
+      'X-API-KEY' : secret
+    }
+  });
 
-//  const data = await res.json();
-//  console.log('Analyze')
-//  console.log(data)
-// }
+ const data = await res.json();
+ console.log('Analyze')
+ console.log(data)
+}
+
+async function FavouriteDog(id, key) {
+    const res = await fetch(API_URL_FAV, {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+        'X-API-KEY' : key
+      },
+        body: JSON.stringify({
+        image_id: id
+        })
+    });
+  
+   const data = await res.json();
+   console.log('Favorite')
+   console.log(data)
+  }
 
 
 
 loadRandomPerros();
-// analyzeFavouriteDog(identificator);
-
+analyzeFavouriteDog(identificator);
+FavouriteDog(identificator, process.env.THE_DOG_API_KEY);
 
 
 // const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';

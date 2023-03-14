@@ -1,17 +1,17 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-(function (process){(function (){
 require("dotenv").config();
 
 const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search';
-const API_URL_ANALYZE = (id) => `https://api.thedogapi.com/v1/favourites/${id}`;
+const API_URL_ANALYZE = (id) => `https://api.thedogapi.com/v1/images/${id}/analysis`;
+const API_URL_FAV = 'https://api.thedogapi.com/v1/favourites';
 
 //console.log(process.env);
 
 console.log("The Script Running");
 
-const identificator = '9ccXTANkb'
+const identificator = 'HJWZZxc4X'
 
-const secret = process.env.THE_DOG_API_KEY;
+const secret = "live_yVTubJs7G68ykhj29D72STR46FChzTJMYjbLkSK8PMg6699F8MVgX7Mfe0WdixYo";
 
 console.log(secret);
 
@@ -31,7 +31,6 @@ async function loadRandomPerros() {
   }
 }
 
-
 const reload_button = document.getElementById('recargar');
 
 reload_button.addEventListener("click", () => {
@@ -39,24 +38,41 @@ reload_button.addEventListener("click", () => {
 })
   
 
-// async function analyzeFavouriteDog(id) {
-//   const res = await fetch(API_URL_ANALYZE(id), {
-//     headers: {
-//       'Content-Type' : 'application/json',
-//       'X-API-KEY' : secret
-//     }
-//   });
+async function analyzeFavouriteDog(id) {
+  const res = await fetch(API_URL_ANALYZE(id), {
+    headers: {
+      'Content-Type' : 'application/json',
+      'X-API-KEY' : secret
+    }
+  });
 
-//  const data = await res.json();
-//  console.log('Analyze')
-//  console.log(data)
-// }
+ const data = await res.json();
+ console.log('Analyze')
+ console.log(data)
+}
+
+async function FavouriteDog(id, key) {
+    const res = await fetch(API_URL_FAV, {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+        'X-API-KEY' : key
+      },
+        body: JSON.stringify({
+        image_id: id
+        })
+    });
+  
+   const data = await res.json();
+   console.log('Favorite')
+   console.log(data)
+  }
 
 
 
 loadRandomPerros();
-// analyzeFavouriteDog(identificator);
-
+analyzeFavouriteDog(identificator);
+FavouriteDog(identificator, "live_yVTubJs7G68ykhj29D72STR46FChzTJMYjbLkSK8PMg6699F8MVgX7Mfe0WdixYo");
 
 
 // const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
@@ -160,8 +176,7 @@ loadRandomPerros();
 
 // loadRandomMichis();
 // loadFavouriteMichis();
-}).call(this)}).call(this,require('_process'))
-},{"_process":7,"dotenv":3}],2:[function(require,module,exports){
+},{"dotenv":3}],2:[function(require,module,exports){
 
 },{}],3:[function(require,module,exports){
 (function (process){(function (){

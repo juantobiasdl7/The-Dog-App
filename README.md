@@ -43,3 +43,8 @@ https://www.learnhowtoprogram.com/intermediate-javascript/test-driven-developmen
 https://medium.com/pareture/show-git-and-other-default-hidden-folders-and-files-in-vs-code-57df151588ea
 
 https://www.youtube.com/watch?v=FmxrC2NGnLI
+
+https://www.codeproject.com/Questions/5306356/How-can-I-use-a-function-in-a-bundle-js-file-using
+
+HTML : Accessing function in bundled javascript (using webpack) from HTML file
+https://www.youtube.com/watch?v=gckan8bXKqg
