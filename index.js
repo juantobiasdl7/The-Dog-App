@@ -12,7 +12,7 @@ console.log("The Script Running");
 
 const secret = process.env.THE_DOG_API_KEY;
 
-async function loadRandomPerros() {
+var load = async function loadRandomPerros() {
   const res = await fetch(API_URL_RANDOM);
   const data = await res.json();
   console.log('Load Random Dogs')
@@ -24,10 +24,11 @@ async function loadRandomPerros() {
         
     img1.src = data[0].url;
 
-    let identificador = data[0].id;
+    img1.alt = data[0].id;
     // console.log("ID de la imagen: ");
     // console.log(data[0].id);
-    return identificador;
+
+    return img1;
   }
 }
 
@@ -35,11 +36,12 @@ const reload_button = document.getElementById('recargar');
 const save_button = document.getElementById('save');
 
 reload_button.addEventListener("click", () => {
-    loadRandomPerros();
+    load();
 })
 
 save_button.addEventListener("click", () => {
-    FavouriteDog(loadRandomPerros(), process.env.THE_DOG_API_KEY);
+  const img1 = document.getElementById('img1');
+  FavouriteDog(img1.alt, process.env.THE_DOG_API_KEY);
 })
   
 
@@ -73,9 +75,9 @@ async function FavouriteDog(id, key) {
    console.log(data)
   }
 
-let i = loadRandomPerros();
+load();
 
-console.log(i);
+
 // analyzeFavouriteDog(identificator);
 //FavouriteDog(identificator, process.env.THE_DOG_API_KEY);
 
