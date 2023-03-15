@@ -48,3 +48,7 @@ https://www.codeproject.com/Questions/5306356/How-can-I-use-a-function-in-a-bund
 
 HTML : Accessing function in bundled javascript (using webpack) from HTML file
 https://www.youtube.com/watch?v=gckan8bXKqg
+
+https://www.npmjs.com/package/envify?activeTab=readme
+
+./node_modules/browserify/bin/cmd.js ./index.js -t [ envify --THE_DOG_API_KEY live_yVTubJs7G68ykhj29D72STR46FChzTJMYjbLkSK8PMg6699F8MVgX7Mfe0WdixYo ] > ./dist/bundle.js
