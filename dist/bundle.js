@@ -5,13 +5,12 @@ const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search';
 const API_URL_ANALYZE = (id) => `https://api.thedogapi.com/v1/images/${id}/analysis`;
 const API_URL_FAV = 'https://api.thedogapi.com/v1/favourites';
 
-//console.log(process.env);
-
 console.log("The Script Running");
 
-//const identificator = 'HJWZZxc4X'
-
 const secret = "live_yVTubJs7G68ykhj29D72STR46FChzTJMYjbLkSK8PMg6699F8MVgX7Mfe0WdixYo";
+
+const reload_button = document.getElementById('recargar');
+const save_button = document.getElementById('save');
 
 var load = async function loadRandomPerros() {
   const res = await fetch(API_URL_RANDOM);
@@ -26,37 +25,9 @@ var load = async function loadRandomPerros() {
     img1.src = data[0].url;
 
     img1.alt = data[0].id;
-    // console.log("ID de la imagen: ");
-    // console.log(data[0].id);
-
+    
     return img1;
   }
-}
-
-const reload_button = document.getElementById('recargar');
-const save_button = document.getElementById('save');
-
-reload_button.addEventListener("click", () => {
-    load();
-})
-
-save_button.addEventListener("click", () => {
-  const img1 = document.getElementById('img1');
-  FavouriteDog(img1.alt, "live_yVTubJs7G68ykhj29D72STR46FChzTJMYjbLkSK8PMg6699F8MVgX7Mfe0WdixYo");
-})
-  
-
-async function analyzeFavouriteDog(id) {
-  const res = await fetch(API_URL_ANALYZE(id), {
-    headers: {
-      'Content-Type' : 'application/json',
-      'X-API-KEY' : secret
-    }
-  });
-
- const data = await res.json();
- console.log('Analyze')
- console.log(data)
 }
 
 async function FavouriteDog(id, key) {
@@ -76,11 +47,17 @@ async function FavouriteDog(id, key) {
    console.log(data)
   }
 
+reload_button.addEventListener("click", () => {
+    load();
+})
+
+save_button.addEventListener("click", () => {
+  const img1 = document.getElementById('img1');
+  FavouriteDog(img1.alt, "live_yVTubJs7G68ykhj29D72STR46FChzTJMYjbLkSK8PMg6699F8MVgX7Mfe0WdixYo");
+})
+
 load();
 
-
-// analyzeFavouriteDog(identificator);
-//FavouriteDog(identificator, process.env.THE_DOG_API_KEY);
 
 
 // const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
