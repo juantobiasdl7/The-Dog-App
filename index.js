@@ -3,6 +3,7 @@ require("dotenv").config();
 const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search';
 const API_URL_ANALYZE = (id) => `https://api.thedogapi.com/v1/images/${id}/analysis`;
 const API_URL_FAV = 'https://api.thedogapi.com/v1/favourites';
+const API_URL_FAV_DELETE = (id) => `https://api.thedogapi.com/v1/favourites/${id}`;
 
 console.log("The Script Running");
 
@@ -53,6 +54,7 @@ reload_button.addEventListener("click", () => {
 save_button.addEventListener("click", () => {
   const img1 = document.getElementById('img1');
   FavouriteDog(img1.alt, process.env.THE_DOG_API_KEY);
+  loadFavouriteDogs(process.env.THE_DOG_API_KEY);
 })
 
 async function loadFavouriteDogs(key) {
@@ -62,6 +64,11 @@ async function loadFavouriteDogs(key) {
       'X-API-KEY' : key
     }
   });
+  const data = await res.json();
+
+  console.log("Objeto con datos de los perros favoritos.");
+
+  console.log(data);
 
   if (res.status !== 200) {
     spanError.innerHTML = "Hubo un error: " + res.status + data.message;
@@ -81,9 +88,9 @@ async function loadFavouriteDogs(key) {
       const btnText = document.createTextNode('Sacar al dog de favoritos');
 
       img.src = dog.image.url;
-      img.width = 150;
+      img.width = 350;
       btn.appendChild(btnText);
-      btn.onclick = () => deleteFavouriteMichi(michi.id);
+      btn.onclick = () => deleteFavouriteDog(dog.id, process.env.THE_DOG_API_KEY);
       article.appendChild(img);
       article.appendChild(btn);
       section.appendChild(article);
@@ -91,11 +98,27 @@ async function loadFavouriteDogs(key) {
   }
 }
 
+async function deleteFavouriteDog(id, key) {
+  const res = await fetch(API_URL_FAV_DELETE(id), {
+    method: 'DELETE',
+    headers: {
+      'Content-Type' : 'application/json',
+      'X-API-KEY' : key
+    }
+  });
+  const data = await res.json();
 
-
+  if (res.status !== 200) {
+    spanError.innerHTML = "Hubo un error: " + res.status + data.message;
+  } else {
+    console.log('Perro eliminado de favoritos')
+    loadFavouriteDogs(process.env.THE_DOG_API_KEY);
+  }
+}
 
 
 load();
+loadFavouriteDogs(process.env.THE_DOG_API_KEY);
 
 
 
