@@ -1,0 +1,100 @@
+/* Basic reset and typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  h1, h2 {
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  
+  /* Random Dogs section */
+  #randomPerros {
+    margin-bottom: 3rem;
+  }
+  
+  #randomPerros img {
+    display: block;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  /* Favorite Dogs section */
+  #favoriteDogs {
+    margin-bottom: 3rem;
+  }
+  
+  #favoriteDogs img {
+    display: block;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+
+  /* Responsive Dog Grid */
+.dog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .dog-grid article {
+    flex: 1;
+    min-width: calc(33.333% - 1rem); /* 3 columns, 1rem gap */
+    max-width: calc(33.333% - 1rem);
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .dog-grid article {
+      min-width: calc(50% - 1rem); /* 2 columns, 1rem gap */
+      max-width: calc(50% - 1rem);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .dog-grid article {
+      min-width: 100%; /* 1 column, no gap */
+      max-width: 100%;
+    }
+  }
+  
+  /* Buttons */
+  button {
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-right: 1rem;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }

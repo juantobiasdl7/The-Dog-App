@@ -5,32 +5,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perritos aleatorios</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  
-  <h1>Perros App</h1>
+  <div class="container">
+    <header>
+      <h1>Perros App</h1>
+    </header>
 
-  <span id="error"></span>
+    <span id="error"></span>
 
-  <section id="randomPerros">
-    <h2>Perros aleatorios</h2>
+    <section id="randomPerros">
+      <h2>Perros aleatorios</h2>
 
-    <article>
-      <img id="img1" width="350" alt="Foto perro aleatorio">
-      <button id="save">Guardar perro en favoritos</button>
-    </article>
+      <article>
+        <img id="img1" width="350" alt="Foto perro aleatorio">
+        <div>
+          <button id="save">Guardar perro en favoritos</button>
+          <button id="recargar">Recargar</button>
+        </div>
+      </article>
+    </section>
 
-    <button id="recargar">Recargar</button>
-  </section>
-  
-  <section id="favoriteDogs">
-    <h2>Perros favoritos</h2>
+    <section id="favoriteDogs">
+      <h2>Perros favoritos</h2>
 
-    <article>
-      <img id="img2" width="350" alt="Foto perro aleatorio">
-      <button>Sacar al perro de favoritos</button>
-    </article>
-  </section>
+      <article>
+        <img id="img2" width="350" alt="Foto perro aleatorio">
+        <button>Sacar al perro de favoritos</button>
+      </article>
+    </section>
+  </div>
 
   <script src="./dist/bundle.js"></script>
 </body>

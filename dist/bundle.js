@@ -86,14 +86,17 @@ async function loadFavouriteDogs(key) {
       const article = document.createElement('article');
       const img = document.createElement('img');
       const btn = document.createElement('button');
+      const div = document.createElement('div');
+      div.classList.add("dog-grid");
       const btnText = document.createTextNode('Sacar al dog de favoritos');
 
       img.src = dog.image.url;
       img.width = 350;
       btn.appendChild(btnText);
       btn.onclick = () => deleteFavouriteDog(dog.id, "live_yVTubJs7G68ykhj29D72STR46FChzTJMYjbLkSK8PMg6699F8MVgX7Mfe0WdixYo");
-      article.appendChild(img);
-      article.appendChild(btn);
+      article.appendChild(div);
+      div.appendChild(img);
+      div.appendChild(btn);
       section.appendChild(article);
     });
   }
